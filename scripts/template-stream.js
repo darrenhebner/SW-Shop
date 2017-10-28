@@ -1,3 +1,5 @@
+// Credit: Jake Archibald (https://jakearchibald.com/2016/streaming-template-literals/)
+
 function templateStream(strings, ...values) {
   let items = [];
 
