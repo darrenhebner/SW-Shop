@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Streamweaver</title>
+</head>
+
+<body>
+  Service worker not yet registered 🤠
+  <script>
+    (function () {
+      if (!navigator.serviceWorker) {
+        console.log("no seriveWorker 4 u");
+        return;
+      }
+
+      navigator.serviceWorker.register('/sw.js');
+    })();
+  </script>
+</body>
+
+</html>

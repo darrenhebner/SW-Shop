@@ -1,0 +1,30 @@
+<main>
+  <h2>Your cart</h2>
+
+  <table class="cart">
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    ${data.length === 0 ? `
+    <tr>
+      <td>No items in cart</td>
+      <td></td>
+    </tr>` : data.map(product => { return `
+    <tr>
+      <td>
+        <a href="${`product/${product.id}`}">${product.title}</a>
+      </td>
+      <td>$${product.variants[0].price}</td>
+      <td class="delete-btn">
+        <form action="/cart" method="POST">
+          <input type="hidden" name="hidden_method" value="DELETE">
+          <input type="hidden" value="${product.id}" name="id">
+          <input type="submit" value="&times;">
+        </form>
+      </td>
+    </tr>
+    ` }).join('')}
+  </table>
+</main>

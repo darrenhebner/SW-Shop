@@ -1,0 +1,22 @@
+<h2>${data.title}</h2>
+
+<main class="product-page">
+  <div class="product-img">
+    <div class="product-img-spacer" style="padding-bottom: ${(data.images[0].height / data.images[0].width) * 100}%"></div>
+    <img src="${data.images[0].src}" alt="${data.title}">
+  </div>
+
+  <div class="product-description">
+    <p>
+      ${data.body_html}
+    </p>
+    <p>
+      $${data.variants[0].price}
+    </p>
+    <form action="/cart" method="POST">
+      <input type="hidden" name="hidden_method" value="POST">
+      <input type="hidden" name="id" value="${data.id}">
+      <input class="add-to-cart" type="submit" value="Add to cart">
+    </form>
+  </div>
+</main>

@@ -1,0 +1,10 @@
+{
+  "name": "streamweaver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Darren Hebner",
+  "license": "MIT",
+  "scripts": {
+    "start": "python -m SimpleHTTPServer 8000"
+  }
+}

@@ -1,0 +1,63 @@
+<a class="cart-btn" href="/cart">Cart (${data.cart_count})</a>
+
+</div>
+<footer>
+  <a href="/">View project on GitHub</a>
+  <a href="https://twitter.com/darrenhebner">@darrenhebner</a>
+</footer>
+</div>
+<!-- close wrapper -->
+
+<script>
+  const imageContainers = document.querySelectorAll('.image-container');
+
+  function preloadImage(imageContainer) {
+    const placeholder = imageContainer.querySelector('.progressive-image');
+    const imageElement = imageContainer.querySelector('.full-image');
+
+    placeholder.onload = () => {
+      imageContainer.classList.add('image-loading');
+    }
+
+
+    imageElement.onload = () => {
+      imageContainer.classList.remove('image-loading');
+      imageContainer.classList.add('image-loaded');
+    }
+
+    imageElement.src = imageElement.dataset.src;
+    if (imageElement.complete) return;
+
+    placeholder.src = placeholder.dataset.src;
+  }
+
+  const config = {
+    rootMargin: '50px 0px',
+    threshold: 0.01
+  }
+
+  const observer = new IntersectionObserver(onIntersection, config);
+
+  imageContainers.forEach(imageContainer => {
+    observer.observe(imageContainer);
+  });
+
+  function onIntersection(entries) {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        observer.unobserve(entry.target);
+        preloadImage(entry.target);
+      }
+    });
+  }
+
+  window.onload = function () {
+    setTimeout(function () {
+      const { loadEventEnd, responseEnd } = performance.timing;
+      console.log('TTI:', loadEventEnd - responseEnd);
+    }, 0);
+  }
+</script>
+</body>
+
+</html>
