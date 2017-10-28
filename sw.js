@@ -2,20 +2,20 @@ const cacheName = '2';
 const productStorageKey = 'productsInCart';
 
 importScripts(
-  '/scripts/template-stream.js',
-  '/scripts/html-decoder.js',
-  '/scripts/localforage.js'
+  './scripts/template-stream.js',
+  './scripts/html-decoder.js',
+  './scripts/localforage.js'
 );
 
 addEventListener('install', event => {
   event.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        '/templates/head.html',
-        '/templates/tail.html',
-        '/templates/body.html',
-        '/templates/product.html',
-        '/templates/cart.html',
+        './templates/head.html',
+        './templates/tail.html',
+        './templates/body.html',
+        './templates/product.html',
+        './templates/cart.html',
         'https://darrens-fake-furniture.myshopify.com/products.json'
       ]);
     })
@@ -86,27 +86,27 @@ function transformImages(data) {
 
 const indexView = () => templateStream`
   ${renderTemplate(
-    caches.match('/templates/head.html').then(res => res.text())
+    caches.match('./templates/head.html').then(res => res.text())
   )}
   ${renderTemplate(
-    caches.match('/templates/body.html').then(res => res.text()),
+    caches.match('./templates/body.html').then(res => res.text()),
     caches
       .match('https://darrens-fake-furniture.myshopify.com/products.json')
       .then(res => res.json())
       .then(json => transformImages(json))
   )}
   ${renderTemplate(
-    caches.match('/templates/tail.html').then(res => res.text()),
+    caches.match('./templates/tail.html').then(res => res.text()),
     cartCount()
   )}
 `;
 
 const productView = id => templateStream`
   ${renderTemplate(
-    caches.match('/templates/head.html').then(res => res.text())
+    caches.match('./templates/head.html').then(res => res.text())
   )}
   ${renderTemplate(
-    caches.match('/templates/product.html').then(res => res.text()),
+    caches.match('./templates/product.html').then(res => res.text()),
     caches
       .match('https://darrens-fake-furniture.myshopify.com/products.json')
       .then(res => res.json())
@@ -127,17 +127,17 @@ const productView = id => templateStream`
       })
   )}
   ${renderTemplate(
-    caches.match('/templates/tail.html').then(res => res.text()),
+    caches.match('./templates/tail.html').then(res => res.text()),
     cartCount()
   )}
 `;
 
 const cartView = () => templateStream`
   ${renderTemplate(
-    caches.match('/templates/head.html').then(res => res.text())
+    caches.match('./templates/head.html').then(res => res.text())
   )}
   ${renderTemplate(
-    caches.match('/templates/cart.html').then(res => res.text()),
+    caches.match('./templates/cart.html').then(res => res.text()),
     caches
       .match('https://darrens-fake-furniture.myshopify.com/products.json')
       .then(res => res.json())
@@ -154,7 +154,7 @@ const cartView = () => templateStream`
       .then(products => products)
   )}
   ${renderTemplate(
-    caches.match('/templates/tail.html').then(res => res.text()),
+    caches.match('./templates/tail.html').then(res => res.text()),
     cartCount()
   )}
 `;
