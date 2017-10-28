@@ -1,5 +1,4 @@
-#
-Service Worker Side Rendering
+# Service Worker Side Rendering
 
 This project is a proof of concept for rendering an app entirely inside of a service worker.
 The templating, routing, and state are all managed inside of the SW.
