@@ -161,10 +161,9 @@ const cartView = () => templateStream`
 
 addEventListener('fetch', event => {
   const requestURL = new URL(event.request.url);
-  console.log(requestURL.pathname);
   if (requestURL.origin != location.origin) return;
 
-  if (requestURL.pathname === '/') {
+  if (requestURL.pathname === ('/' || '/SW-Shop/')) {
     event.respondWith(
       new Response(indexView(), {
         headers: {'Content-Type': 'text/html; charset=utf-8 '}
