@@ -163,7 +163,7 @@ addEventListener('fetch', event => {
   const requestURL = new URL(event.request.url);
   if (requestURL.origin != location.origin) return;
 
-  if (requestURL.pathname === ('/' || '/SW-Shop/')) {
+  if (requestURL.pathname === '/') {
     event.respondWith(
       new Response(indexView(), {
         headers: {'Content-Type': 'text/html; charset=utf-8 '}

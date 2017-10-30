@@ -17,7 +17,7 @@ By rendering inside the service worker, we can build a network resilient app tha
 4. The service worker responds to the request with the stream.
 
 ## Benefits to this approach
-- Network resilient. Once the SW is installed, the app does not need to rely on the network. This results in a very fast app regardless of the network.
+- Network resilient. Once the SW is installed, the app does not need to rely on the network. This results in a very fast app regardless of the network conditions.
 - No bulky client side JS bundle.
 - Takes advantage of the platform. Traditional single page apps require you to include extra JS just to re-implement basic browser features. For example, page navigation and URL management.
 - Streaming. We are able to start sending down pieces of the page as they are available. This allows us to get content to the user as soon as possible. Streaming is thrown away with client side JavaScript apps. Jake Archibald has written [quite a bit](https://jakearchibald.com/2016/fun-hacks-faster-content/) [about the benefits](https://jakearchibald.com/2016/streaming-template-literals/) [of streaming](https://jakearchibald.com/2016/streams-ftw/).
